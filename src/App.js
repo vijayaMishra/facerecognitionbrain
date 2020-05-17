@@ -33,8 +33,8 @@ class App extends Component{
       input: '',
       imageUrl: '',
       box:{},
-
-      route: 'signin'  //keeps track of where we're on pg
+      route: 'signin',  //keeps track of where we're on pg
+      isSignedIn: false
     }
   }
 
@@ -75,6 +75,11 @@ class App extends Component{
   }
 
   onRouteChange = (route) => {
+    if(route === 'signout') {
+      this.setState({isSignedIn: false})
+    } else if (route === 'home') {
+      this.setState({isSignedIn: true})
+    }
     this.setState({route: route});  //wrapped in curly braces cuz it's an object component
   }
 
